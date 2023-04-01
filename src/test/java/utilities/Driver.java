@@ -3,46 +3,53 @@ package utilities;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.safari.SafariDriver;
 
-import java.util.concurrent.TimeUnit;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Driver {
 
-    private Driver(){
+    private Driver() {
 
     }
 
-   private static WebDriver driver;
-    // driver'i baska class'lardan sadece Driver class ismi ile cagirabilmek icin STATIC yaptik
-    // henuz bu driver ile ilgili ayarlar yapmadigim icin baska class'lar bunu yanlislikla kullanmasin diye
-    // erisimi private yaptik (sadece bu class'in kullanimina acik yaptik)
+    static String tarih;
+    static WebDriver driver;
 
-    public static WebDriver getDriver(){
-        if (driver==null){
-            // if'i bu method her calistiginda yeni bir driver olusturmamasi icin kullaniyorruz
-            // if driver'i kontrol edecek eger bir deger atamasi yapildiysa yeni bir driver olusturmayacak
+    // testlerimizi calistirdigimizda her seferinde yeni driver olusturdugu icin
+    // her test methodu icin yeni bir pencere (driver) aciyor
+    // eger driver'a bir deger atanmamissa yani driver == null ise
+    // bir kere driver'i calistir diyerek bir kere if icini calistiracak
+    // ve driver artik bir kere calistigi icin ve deger atandigi icin null olmayacak
+    // ve direk return edecek ve diger testlerimiz ayni pencere (driver) uzerinde calisacak
+
+    public static WebDriver getDriver() {
+        if (driver == null) {
             switch (ConfigReader.getProperty("browser")) {
-                // case'i driver'i istedigimiz browser'da calistirmak icin kullaniyoruz
-                // configuration.properties dosyasinda browser olarak ne yazdiksa tum testlerimiz o browser'da calisacak
-                // browser secimi yapilmadiysa default olarak chrome devreye girecek
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
                     driver = new ChromeDriver();
+                    break;
+                case "edge":
+                    WebDriverManager.edgedriver().setup();
+                    driver = new EdgeDriver();
                     break;
                 case "firefox":
                     WebDriverManager.firefoxdriver().setup();
                     driver = new FirefoxDriver();
                     break;
-                case "opera":
-                    WebDriverManager.operadriver().setup();
-                    driver = new OperaDriver();
+                case "safari":
+                    WebDriverManager.safaridriver().setup();
+                    driver = new SafariDriver();
                     break;
-                case "edge":
-                    WebDriverManager.edgedriver().setup();
-                    driver = new EdgeDriver();
+                case "headless-chrome":
+                    WebDriverManager.chromedriver().setup();
+                    driver = new ChromeDriver(new ChromeOptions().setHeadless(true));
                     break;
                 default:
                     WebDriverManager.chromedriver().setup();
@@ -50,17 +57,29 @@ public class Driver {
             }
 
             driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         }
+
+
+        LocalDateTime localDateTime = LocalDateTime.now();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyMMddHHmmss");
+        tarih = localDateTime.format(dateTimeFormatter);
+
         return driver;
     }
 
-    public static void closeDriver(){
-        if (driver!=null){
-            driver.quit();
+    public static void closeDriver() {
+        if (driver != null) {
+            driver.close();
+            driver = null; // kapandiktan sonraki acmalari garanti altina almak icin driver'i tekrar null yaptik
         }
-        // burada yeniden null degeri atamamizin sebebi. bir sonraki getDriver method'u cagirisimizda
-        // yeni deger atayabilmek istememizdir.
-        driver=null;
     }
+
+    public static void quitDriver() {
+        if (driver != null) {
+            driver.quit();
+            driver = null; // kapandiktan sonraki acmalari garanti altina almak icin driver'i tekrar null yaptik
+        }
+    }
+
 }

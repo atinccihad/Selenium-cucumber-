@@ -1,57 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="6" time="69.009">
-    <testcase classname="US1001 amazon arama" name="TC01 amazon nutella arama" time="13.819">
-        <system-out>
-            <![CDATA[When kullanici amazon sayfasina gider.......................................passed
-And nutella icin arama yapar................................................passed
-Then sonucun nutella icerdigini test eder...................................passed
-And sayfayi kapatir.........................................................passed
-]]>
-        </system-out>
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="3" time="122.761">
+    <testcase classname="US1002 Background Used" name="TC01 kullanici amazonda kelime aratir" time="65.283">
+        <system-out><![CDATA[Given kullanici amazon anasayfasina gider...................................passed
+Then kullanici Nutella icin arama yapar.....................................passed
+And kullanici sonuclarin Nutella icerdigini test eder.......................passed
+]]></system-out>
     </testcase>
-    <testcase classname="US1001 amazon arama" name="TC02 amazon java arama" time="12.086">
-        <system-out>
-            <![CDATA[When kullanici amazon sayfasina gider.......................................passed
-And java icin arama yapar...................................................passed
-Then sonucun java icerdigini test eder......................................passed
-And sayfayi kapatir.........................................................passed
-]]>
-        </system-out>
+    <testcase classname="US1002 Background Used" name="TC02 kullanici amazonda kelime aratir" time="27.779">
+        <system-out><![CDATA[Given kullanici amazon anasayfasina gider...................................passed
+Then kullanici Selenium icin arama yapar....................................passed
+And kullanici sonuclarin Selenium icerdigini test eder......................passed
+]]></system-out>
     </testcase>
-    <testcase classname="US1001 amazon arama" name="TC03 amazon ipad arama" time="10.228">
-        <system-out>
-            <![CDATA[When kullanici amazon sayfasina gider.......................................passed
-And ipad icin arama yapar...................................................passed
-Then sonucun ipad icerdigini test eder......................................passed
-And sayfayi kapatir.........................................................passed
-]]>
-        </system-out>
-    </testcase>
-    <testcase classname="US1002 amazon background ile arama" name="TC04 amazon nutella arama" time="10.654">
-        <system-out>
-            <![CDATA[When kullanici amazon sayfasina gider.......................................passed
-And nutella icin arama yapar................................................passed
-Then sonucun nutella icerdigini test eder...................................passed
-And sayfayi kapatir.........................................................passed
-]]>
-        </system-out>
-    </testcase>
-    <testcase classname="US1002 amazon background ile arama" name="TC05 amazon java arama" time="10.799">
-        <system-out>
-            <![CDATA[When kullanici amazon sayfasina gider.......................................passed
-And java icin arama yapar...................................................passed
-Then sonucun java icerdigini test eder......................................passed
-And sayfayi kapatir.........................................................passed
-]]>
-        </system-out>
-    </testcase>
-    <testcase classname="US1002 amazon background ile arama" name="TC06 amazon ipad arama" time="10.793">
-        <system-out>
-            <![CDATA[When kullanici amazon sayfasina gider.......................................passed
-And ipad icin arama yapar...................................................passed
-Then sonucun ipad icerdigini test eder......................................passed
-And sayfayi kapatir.........................................................passed
-]]>
-        </system-out>
+    <testcase classname="US1002 Background Used" name="TC03 kullanici amazonda kelime aratir" time="27.405">
+        <system-out><![CDATA[Given kullanici amazon anasayfasina gider...................................passed
+Then kullanici iphone aramasi yapar.........................................passed
+And kullanici sonuclarin iphone icerdigini test eder........................passed
+And kullanici sayfayi kapatir...............................................passed
+]]></system-out>
     </testcase>
 </testsuite>
