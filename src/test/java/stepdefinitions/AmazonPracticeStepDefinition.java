@@ -32,7 +32,7 @@ public class AmazonPracticeStepDefinition {
 
     @When("faker kullanarak e-posta gonderir")
     public void faker_kullanarak_e_posta_gonderir() {
-        //    practiceAmazonPage.emailBox.sendKeys(faker.internet().emailAddress());
+        practiceAmazonPage.emailBox.sendKeys(faker.internet().emailAddress());
         practiceAmazonPage.emailBox.sendKeys(Faker.instance().internet().emailAddress());
     }
 
