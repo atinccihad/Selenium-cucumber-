@@ -1,6 +1,6 @@
 @PracticeAmazon
 Feature: Amazon Practice
-
+  @a1
   Scenario: Amazon sign Test
 
     Given  kullanici "amazonUrl" e gider

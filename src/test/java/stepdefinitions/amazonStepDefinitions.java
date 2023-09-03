@@ -28,7 +28,7 @@ public class amazonStepDefinitions {
     @Then("sonucun nutella icerdigini test eder")
     public void sonucun_nutella_icerdigini_test_eder() {
 
-        Assert.assertTrue(amazonPage.sonucYazisiElementi.getText().contains("Nutella"));
+        Assert.assertTrue(amazonPage.aramaSonucElementi.getText().contains("Nutella"));
 
     }
     @Then("sayfayi kapatir")
@@ -42,7 +42,7 @@ public class amazonStepDefinitions {
     }
     @Then("sonucun java icerdigini test eder")
     public void sonucun_java_icerdigini_test_eder() {
-        Assert.assertTrue(amazonPage.sonucYazisiElementi.getText().contains("Java"));
+        Assert.assertTrue(amazonPage.aramaSonucElementi.getText().contains("Java"));
     }
     @When("ipad icin arama yapar")
     public void ipad_icin_arama_yapar() {
@@ -51,7 +51,7 @@ public class amazonStepDefinitions {
     }
     @Then("sonucun ipad icerdigini test eder")
     public void sonucun_ipad_icerdigini_test_eder() {
-        Assert.assertTrue(amazonPage.sonucYazisiElementi.getText().contains("ipad"));
+        Assert.assertTrue(amazonPage.aramaSonucElementi.getText().contains("ipad"));
     }
 
     @And("{string} icin arama yapar")
@@ -63,7 +63,7 @@ public class amazonStepDefinitions {
     @Then("sonucun {string} icerdigini test eder")
     public void sonucunIcerdiginiTestEder(String arananKelime) {
 
-        Assert.assertTrue(amazonPage.sonucYazisiElementi.getText().contains(arananKelime));
+        Assert.assertTrue(amazonPage.aramaSonucElementi.getText().contains(arananKelime));
     }
 
     @Given("kullanici {string} sayfasina gider")
@@ -74,7 +74,7 @@ public class amazonStepDefinitions {
 
     @And("sonuc sayisini yazdirir")
     public void sonucSayisiniYazdirir() {
-        System.out.println(amazonPage.sonucYazisiElementi.getText());
+        System.out.println(amazonPage.aramaSonucElementi.getText());
     }
 
     @Then("basligin {string} icerdigini test eder")

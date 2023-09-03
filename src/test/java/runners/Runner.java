@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
                 "junit:target/xml-report/cucumber.xml"},
         features = "src/test/resources/features",
         glue = "stepdefinitions",
-        tags = "@PracticeAmazon", // iki tagi calistirmak isterseniz "@tagname1  or  @tagname2"
+        tags = "@a1", // iki tagi calistirmak isterseniz "@tagname1  or  @tagname2"
 
         dryRun = false
 )
